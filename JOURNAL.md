@@ -15,3 +15,17 @@ If there are changes and the version was not adjusted accordingly, this snapshot
 **Setup confirmation:** [Yes] App runs locally at localhost:5173
 
 **Cohort ledger:** [N/A] Issue added to cohort ledger (I am a TF)
+
+---
+
+### Reproduction/Confirmation of Issue:
+
+Before (In bash, run "make test-unit" and check for test_prompt_templates.py):
+![All passing tests for test_prompt_templates.py unit tests](image.png)
+All the tests were passing for test_prompt_templates.py
+
+After (after temporarily altering the prompt templates heavily without changing the version):
+![All except test_skills_feedback_requests-json_format passed for test_prompt_templates.py unit tests](image-1.png)
+Most tests for test_prompt_templates.py pass except a JSON format test. This is because I removed the entire section for the JSON format request in one of the prompt templates. Aside from this, the prompt template changes I made were nearly undetectable. Smaller, more subtle changes without version updates would be much harder to trace. This requires the need of another unit test.
+
+---
