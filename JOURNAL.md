@@ -29,3 +29,15 @@ After (after temporarily altering the prompt templates heavily without changing 
 Most tests for test_prompt_templates.py pass except a JSON format test. This is because I removed the entire section for the JSON format request in one of the prompt templates. Aside from this, the prompt template changes I made were nearly undetectable. Smaller, more subtle changes without version updates would be much harder to trace. This requires the need of another unit test.
 
 ---
+
+## Week 8 — Reproduction & solution planning
+
+**Reproduction commit link:** https://github.com/EshaM3/pathreview/commit/d290dad2d956a1cea513ad61a4a1296e9ce2b1c6
+
+**Reproduction summary:**
+I ran all the test_prompt_templates.py unit tests to see them all passing. Then, after temporarily removing a bunch of text, I ran it again to see all except one test still passing. This showed to me that such a big change was barely traceable, so this was a problem for even more subtle prompt template changes.
+
+**PLAN.md link:** https://github.com/EshaM3/pathreview/commit/86874a512bbaa838572e6076a68a74a024c32216
+
+**Blockers or open questions:**
+Will need to think on how to make a script to generate a file, as I don't recall doing that before.
