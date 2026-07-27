@@ -21,18 +21,20 @@ Specifically:
 What are the steps to fix this issue?
 Break it into 3–5 concrete sub-tasks.
 
-1. mkdir snapshots in tests/unit and commit a generated prompt_templates.json inside snapshots. Inside, maps between each template and their version, hash of the template strings should be stored. For example:
+1. mkdir snapshots in tests/unit and commit a generated prompt_templates.json inside snapshots. Inside, there will be maps between each template and their (version, hash) of the template strings should be stored. For example:
 {
   "skills_feedback": { "v1": "3f2a…" },
   "projects_feedback": { "v1": "9b1c…" },
   "first_impression":  { "v1": "7d4e…" }
 }
-Generate it once by running the script I will make in the 5th step.
-2. Add a snapshot_hashes() function to prompt_templates.py. This will generate hashes for all the text in the templates. It should be imported bt both the test and the script.
+This will be generated it once by running the script I will make in the 4th step later.
+2. Add a snapshot_hashes() function to prompt_templates.py. This will generate hashes for all the text in the templates. This new function should be imported by both the test and the script in step 4.
 3. Make a test that first checks if the instance of the snapshot even exists. If it doesn't, run the script to generate it (scripts/update_prompt_snapshot.py)
-4. In the test: If the instance of the snapshot already exists, go through each version of each template and hash their strings. If a version does not exist, pass with a non-fatal message saying that the version is not yet captured in a snapshot. Run the script to record it. If a version already exists in the snapshot, compare the hashes between the current and the snapshot. If they differ, add a tuple with the version and template to a "failure" list. Continue scanning for more mismatches. Then, return a failure message that mentions all the template versions in the failure list.
-5. Make the regenerate script in scripts/update_prompt_snapshot.py. Compute the hashes of each version by using the imported hash function and write it to tests/unit/snapshots/prompt_templates.json. Have it print number of written templates and versions for viz.
-6. Have this new test replace this unit test in test_prompt_templates.py: test_template_snapshot_content_hash(). This is both because its docstrings are not matching current implementation and it only checking for any change regardless of version bump seems to be an outdated requirement. We care about version bump.
+4. Make the regenerate script in scripts/update_prompt_snapshot.py. Compute the hashes of each version by using the imported hash function and write it to tests/unit/snapshots/prompt_templates.json.
+5. In the test: If the instance of a snapshot already exists, go through each version of each template and hash their strings. Compare the hashes between the current prompt templates and those of the snapshot: 
+If a version does not exist, pass with a non-fatal message saying that the version is not yet captured in a snapshot. Run the script to record it.
+If a version already exists in the snapshot, compare the hashes between the current and the snapshot. If they differ, add a tuple with the version and template to a "failure" list. Continue scanning for more mismatches. Then, return a failure message that mentions all the template versions in the failure list.
+6. Have this new test replace this unit test in test_prompt_templates.py: test_template_snapshot_content_hash(). This is both because its docstrings are not matching current implementation and it only checking for any change regardless of version bump seems to be an outdated requirement. We care about version bump. Now, generate a snapshot once by running the script.
 
 ### Inputs & outputs
 What does your fix take as input? What should it produce or change?

@@ -41,3 +41,20 @@ I ran all the test_prompt_templates.py unit tests to see them all passing. Then,
 
 **Blockers or open questions:**
 Will need to think on how to make a script to generate a file, as I don't recall doing that before.
+
+---
+
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+I have completed all the subtasks from PLAN.md.
+
+**Next steps:**
+I will create and fill out the PR for this test enhancement.
+
+**Blockers:**
+None.
+
+---
