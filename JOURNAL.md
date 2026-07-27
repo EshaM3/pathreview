@@ -58,3 +58,19 @@ I will create and fill out the PR for this test enhancement.
 None.
 
 ---
+
+### Check-in 2 (end of week)
+
+**PR link:** https://github.com/ascherj/pathreview/pull/318
+
+**Branch:** `test/37-snapshot-tests-for-prompt-templates`
+
+**What you built:**
+This PR replaces the "test_template_snapshot_content_hash" unit test with the new "test_template_version_update_snapshot" unit test. The new unit test calls on a script that can generate snapshots of the prompt templates if a snapshot does not already exist. And if there is a silent change made to any template without adding it as a new/updated version, then the test fails.
+
+**Tests added or updated:**
+`test_prompt_templates.py` was the test file I added to for this PR
+
+**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
+
+**Draft PR feedback received from:** none
