@@ -74,3 +74,36 @@ This PR replaces the "test_template_snapshot_content_hash" unit test with the ne
 **Self-review confirmation:** [x] make check passes  [x] make test-unit passes
 
 **Draft PR feedback received from:** none
+
+---
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [ ] Yes  [x] No — still awaiting review
+
+**Summary of feedback:**
+No reviews came in yet.
+
+**How you responded:**
+N/A
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+The planning part for the implementation still had gaps left to fill by the time I was implementing the solution. I guess when I was planning, I did not completely visualize the concrete, step by step process I would go through enough to see that some parts of the plan were missing. During the implementation phase, I had to fill in those gaps as I went, as well as reorder some of the steps for a more logical implementation. But thankfully, once I rearranged those and filled in the gaps midway through the implementation, everything else mainly fell into place.
+
+**What did you learn about working in a large codebase?**
+Definitely make sure to read documentation files like `CONTRIBUTING.md`, `SETUP.md`, `README.md` and `ARCHITECTURE.md` before planning any fixes or creating your branch. Not only do these files have helpful information that help you understand what is going on in this new, foreign codebase, but it will inform you of all the conventions required of all contributors to keep everything organized and running smoothly. Also, the UMPIRE method still applies here and is very useful for planning one's fix (especially with considering edge cases).
+
+**How did AI tools help — and where did they fall short?**
+It helped the most during the planning phase and the implementation phase. While planning, it provided some useful insight on how snapshots were usually generated with a separate script file that a snapshot test would call on, and that "hash codes" are what are generally used when generating snapshots so that one does not have to save large text blocks in the snapshot. This was quite useful for someone who has never even heard of a snapshot test before to implement it in a way that is both organized and expected by other contributors. It also brought up some edge cases I haven't thought of so that I could tweak my plan to better mitigate those. As for the implementation, it helped a lot with hash syntax and all of the file reading/writing syntax that was required to call a script, writing the generated snapshot as a new json file in a new directory, etc., as I was not very familiar with writing code for these processes before.
+
+**What would you do differently if you started over?**
+I would definitely try to take a bit more time with planning so that the order would be more logical and that there would be less gaps to fill during the implementation phase. Also, I would not run this command too quickly: `make format`, as it ended up correcting linting issues throughout the entire codebase (not part of the scope of the issue), which I had to partially undo due to how it would have crowded my PR with unrelated file edits.
+
+**What are you most proud of from this module?**
+I am proud of myself for implementing something I wasn't very familiar with nearly at all. I understood it conceptually, but I have never implemented it before. So, planning and implementing a fix with many file reading/writing components was an intimidating task that I am very happy correctly works!
